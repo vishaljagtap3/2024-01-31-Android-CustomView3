@@ -2,20 +2,45 @@ package `in`.bitcode.recyclerview2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.Random
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerProducts : RecyclerView
+    private lateinit var edtProductTitle : EditText
+    private lateinit var edtProductPrice : EditText
+    private lateinit var btnAddProduct : Button
+
     private val products = ArrayList<Product>()
     private lateinit var productsAdapter: ProductsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
-        initData();
+        initData()
         initAdapter()
+        initListener()
+    }
+
+    private fun initListener() {
+        btnAddProduct.setOnClickListener {
+            val newProduct = Product(
+                Math.abs(Random().nextInt()),
+                edtProductTitle.text.toString(),
+                edtProductPrice.text.toString().toInt(),
+                R.mipmap.ic_launcher
+            )
+
+            products.add(0, newProduct)
+            productsAdapter.notifyItemInserted(0)
+            recyclerProducts.scrollToPosition(0)
+            //productsAdapter.notifyDataSetChanged()
+            //productsAdapter.notifyItemInserted(products.size - 1)
+        }
     }
 
     private fun initAdapter() {
@@ -41,5 +66,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         recyclerProducts = findViewById(R.id.recyclerProducts)
         recyclerProducts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        edtProductTitle = findViewById(R.id.edtProductTitle)
+        edtProductPrice = findViewById(R.id.edtProductPrice)
+        btnAddProduct = findViewById(R.id.btnAddProduct)
     }
 }

@@ -18,14 +18,22 @@ class ProductsAdapter(
         val imgProduct : ImageView
         val txtProductTitle : TextView
         val txtProductPrice : TextView
+        val imgDeleteProduct : ImageView
         init {
             imgProduct = view.findViewById(R.id.imgProduct)
             txtProductTitle = view.findViewById(R.id.txtProductTitle)
             txtProductPrice = view.findViewById(R.id.txtProductPrice)
+            imgDeleteProduct = view.findViewById(R.id.imgDeleteProduct)
 
-            view.setOnClickListener {
+            itemView.setOnClickListener {
                 val product = products[adapterPosition]
                 Toast.makeText(it.context, "Product Selected: ${product.title}", Toast.LENGTH_LONG).show()
+            }
+
+            imgDeleteProduct.setOnClickListener {
+                products.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+                //this@ProductsAdapter.notifyDataSetChanged()
             }
         }
     }
