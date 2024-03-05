@@ -16,6 +16,7 @@ class ProductView(
     private val imgDeleteIcon : ImageView
     private val txtProductTitle : TextView
     private val txtProductPrice : TextView
+    private val txtProductRating : TextView
 
     interface OnDeleteClickListener {
         fun onDeleteClick(product: Product)
@@ -31,6 +32,7 @@ class ProductView(
         imgDeleteIcon = view.findViewById(R.id.imgDeleteProduct)
         txtProductTitle = view.findViewById(R.id.txtProductTitle)
         txtProductPrice = view.findViewById(R.id.txtProductPrice)
+        txtProductRating = view.findViewById(R.id.txtProductRating)
 
         imgDeleteIcon.setOnClickListener {
             onDeleteClickListener?.onDeleteClick(product!!)
@@ -47,6 +49,6 @@ class ProductView(
             imgDeleteIcon.setImageResource(android.R.drawable.ic_menu_delete)
             txtProductPrice.text = "${value.price}"
             txtProductTitle.text = value.title
-
+            txtProductRating.text = "${value.rating}"
         }
 }

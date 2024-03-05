@@ -49,12 +49,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-        products.add(Product(101, "Laptop", 1000, R.mipmap.ic_launcher))
+        products.add(Product(101, "Laptop", 1000, R.mipmap.ic_launcher, 3.4f))
         products.add(Product(102, "Phone", 1050, R.mipmap.ic_launcher))
         products.add(Product(103, "Projector", 2000, R.mipmap.ic_launcher))
         products.add(Product(104, "Notebook", 3400, R.mipmap.ic_launcher))
         products.add(Product(105, "Desk", 5300, R.mipmap.ic_launcher))
-        products.add(Product(106, "Mouse", 6800, R.mipmap.ic_launcher))
+        products.add(Product(106, "Mouse", 6800, R.mipmap.ic_launcher, 4.2f))
         products.add(Product(107, "KB", 100, R.mipmap.ic_launcher))
         products.add(Product(108, "Charger", 120, R.mipmap.ic_launcher))
         products.add(Product(109, "Tab", 450, R.mipmap.ic_launcher))
